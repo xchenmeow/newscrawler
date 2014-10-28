@@ -1,0 +1,302 @@
+"Ticker"	"
+Constituent Name"	"Constituent Name(Eng.)"	"Exchange"
+000001	平安银行	Ping An Bank Co., Ltd.	Shenzhen
+000002	万科Ａ	China Vanke Co Ltd	Shenzhen
+000009	中国宝安	Shenzhen Baoan Enterprises (Group) Co Ltd	Shenzhen
+000012	南  玻Ａ	CSG Holding Co Ltd	Shenzhen
+000024	招商地产	China Merchants Property Development Co Ltd	Shenzhen
+000039	中集集团	China International Marine Containers (Group) Co Ltd	Shenzhen
+000046	泛海建设	Oceanwide Construction Group Co Ltd	Shenzhen
+000060	中金岭南	Shenzhen Zhongjin Lingnan Nonfemet Co Ltd	Shenzhen
+000061	农 产 品	Shenzhen Agricultural Products Co Ltd	Shenzhen
+000063	中兴通讯	ZTE Corporation	Shenzhen
+000069	华侨城Ａ	Shenzhen Overseas Chinese Town Co Ltd	Shenzhen
+000100	TCL集团	TCL Corporation	Shenzhen
+000156	华数传媒	WASU MEDIA HOLDING CO., LTD	Shenzhen
+000157	中联重科	Zoomlion Heavy Industry Science & Technology Co Ltd	Shenzhen
+000333	美的集团	Midea Group CO., LTD	Shenzhen
+000338	潍柴动力	Wei Chai Power Co Ltd	Shenzhen
+000400	许继电气	XJ Electric Co Ltd	Shenzhen
+000401	冀东水泥	Tangshan Jidong Cement Co Ltd	Shenzhen
+000402	金 融 街	Financial Street Holding Co Ltd	Shenzhen
+000423	东阿阿胶	Shandong Dong-Ee Jiao Co Ltd	Shenzhen
+000425	徐工机械	XCMG Construction Machinery Co Ltd	Shenzhen
+000528	柳工	Guangxi Liugong Machinery Co Ltd	Shenzhen
+000536	华映科技	CPT Technology (Group) Co Ltd	Shenzhen
+000538	云南白药	Yunnan Baiyao Industry Co Ltd	Shenzhen
+000562	宏源证券	Hong Yuan Securities Co Ltd	Shenzhen
+000568	泸州老窖	Luzhou Lao Jiao Co Ltd	Shenzhen
+000581	威孚高科	Weifu High-Technology Group Co Ltd	Shenzhen
+000596	古井贡酒	Anhui Gujing Distillery Co Ltd	Shenzhen
+000598	兴蓉投资	Chengdu Xingrong Investment Co Ltd	Shenzhen
+000623	吉林敖东	Jilin Aodong Medicine Industry (Groups) Co Ltd	Shenzhen
+000625	长安汽车	Chongqing Changan Automobile Co Ltd	Shenzhen
+000629	攀钢钒钛	Pangang Group Vanadium Titanium & Resources Co., Ltd.	Shenzhen
+000630	铜陵有色	Tongling Nonferrous Metals Group Co. Ltd	Shenzhen
+000651	格力电器	Gree Electric Appliances Inc of Zhuahai	Shenzhen
+000656	金科股份	Chongqing Dongyuan Industry Development Co Ltd	Shenzhen
+000686	东北证券	Northeast Securities Co Ltd	Shenzhen
+000703	恒逸石化	Hengyi Petrochemical Co Ltd	Shenzhen
+000709	河北钢铁	Hebei Iron & Steel Co., Ltd	Shenzhen
+000718	苏宁环球	Suning Universal Co Ltd	Shenzhen
+000725	京东方A	BOE Technology Group Co Ltd	Shenzhen
+000728	国元证券	Guoyuan Securities Company Limited	Shenzhen
+000729	燕京啤酒	Beijing Yanjing Brewery Co Ltd	Shenzhen
+000750	国海证券	Sealand Securities Co., Ltd.	Shenzhen
+000758	中色股份	China Nonferrous Metal Industry's Foreign Engineering & Construction Corp	Shenzhen
+000768	中航飞机	Xi'an Aircraft International Corp	Shenzhen
+000776	广发证券	GF Securities Co., Ltd.	Shenzhen
+000778	新兴铸管	Xinxing Ductile Iron Pipes Co Ltd	Shenzhen
+000783	长江证券	Changjiang Securities Company Limited	Shenzhen
+000792	盐湖股份	Qinghai Salt Lake Industry Co Ltd	Shenzhen
+000793	华闻传媒	Huawen Media Investment Corp	Shenzhen
+000800	一汽轿车	FAW Car Co Ltd	Shenzhen
+000826	桑德环境	Sound Environmental Resources Co Ltd	Shenzhen
+000831	五矿稀土	Shanxi Guanlu Co Ltd	Shenzhen
+000839	中信国安	CITIC Guoan Information Industry Co Ltd	Shenzhen
+000858	五 粮 液	Wuliangye Yibin Co Ltd	Shenzhen
+000869	张  裕Ａ	Yantai Changyu Pioneer Wine Co Ltd	Shenzhen
+000876	新 希 望	NEW HOPE LIUHE CO., LTD	Shenzhen
+000878	云南铜业	Yunnan Copper Co Ltd	Shenzhen
+000895	双汇发展	Henan Shuanghui Investment & Development Co Ltd	Shenzhen
+000933	神火股份	Henan Shen Huo Coal Industry and Electricity Power Co Ltd	Shenzhen
+000937	冀中能源	Jizhong Energy Resources Co Ltd	Shenzhen
+000960	锡业股份	Yunnan Tin Co Ltd	Shenzhen
+000961	中南建设	Jiansu Zhongnan Construction Group Co. Ltd	Shenzhen
+000963	华东医药	Huadong Medicine Co Ltd	Shenzhen
+000970	中科三环	Beijing Zhong Ke San Huan High-Tech Co Ltd	Shenzhen
+000983	西山煤电	Shanxi Xishan Coal And Electricity Power Co Ltd	Shenzhen
+000999	华润三九	China Resources Sanjiu Medical & Pharmaceutical Co Ltd	Shenzhen
+002001	新和成	Zhejiang NHU Co Ltd	Shenzhen
+002007	华兰生物	Hualan Biological Engineering INC	Shenzhen
+002024	苏宁云商	SUNING COMMERCE GROUP CO., LTD.	Shenzhen
+002038	双鹭药业	Beijing SL Pharmaceutical Co Ltd	Shenzhen
+002051	中工国际	China CAMC Engineering Co Ltd	Shenzhen
+002065	东华软件	Beijing DHC Digital Technology Co Ltd	Shenzhen
+002069	獐子岛	ZHANGZIDAO GROUP CO., LTD.	Shenzhen
+002081	金螳螂	Suzhou Gold Mantis Construction Decoration Co Ltd	Shenzhen
+002106	莱宝高科	Lai Bao Hi-Tech	Shenzhen
+002129	中环股份	Tianjin Zhonghuan Semiconductor Joint-stock Co Ltd	Shenzhen
+002142	宁波银行	Bank of Ningbo Co Ltd	Shenzhen
+002146	荣盛发展	Risesun Real Estate Development Co Ltd	Shenzhen
+002155	辰州矿业	Chenzhou Mining Group Co Ltd	Shenzhen
+002202	金风科技	Xinjiang Goldwind Science & Technology Co Ltd	Shenzhen
+002230	科大讯飞	Anhui USTC iFlytek Co Ltd	Shenzhen
+002236	大华股份	Zhejiang Dahua Technology Co Ltd	Shenzhen
+002241	歌尔声学	GoerTek Inc	Shenzhen
+002269	美邦服饰	Shanghai Metersbonwe Fashion & Accessories Co Ltd	Shenzhen
+002294	信立泰	Shenzhen Salubris Pharmaceuticals Co Ltd	Shenzhen
+002299	圣农发展	Fujian Sunner Development Co Ltd	Shenzhen
+002304	洋河股份	Jiangsu Yanghe Brewery Joint-Stock Co Ltd	Shenzhen
+002310	东方园林	Beijing Orient Landscape Co Ltd	Shenzhen
+002344	海宁皮城	Haining China Leather Market Co Ltd	Shenzhen
+002353	杰瑞股份	Yantai Jereh Oilfield Services Group Co Ltd	Shenzhen
+002375	亚厦股份	Zhejiang Yasha Decoration Co Ltd	Shenzhen
+002385	大北农	Beijing Dabeinong Technology Group Co Ltd	Shenzhen
+002399	海普瑞	Shenzhen Hepalink Pharmaceutical Co Ltd	Shenzhen
+002415	海康威视	Hangzhou Hikvision Digital Technology Co Ltd	Shenzhen
+002422	科伦药业	Sichuan Kelun Pharmaceutical Co Ltd	Shenzhen
+002431	棕榈园林	Palm Landscape Architecture Co Ltd	Shenzhen
+002450	康得新	Beijing Kangde Xin Composite Material Co Ltd	Shenzhen
+002456	欧菲光	Shenzhen O-film Tech Co Ltd	Shenzhen
+002500	山西证券	Shanxi Securities Co Ltd	Shenzhen
+002570	贝因美	Beingmate Baby & Child Food Co., Ltd.	Shenzhen
+002594	比亚迪	BYD Co Ltd	Shenzhen
+002603	以岭药业	Shijiazhuang Yiling Pharmaceutical Co Ltd	Shenzhen
+002653	海思科	Xizang Haisco Pharmaceutical Group CO., LTD	Shenzhen
+002673	西部证券	WESTERN SECURITIES CO., LTD	Shenzhen
+600000	浦发银行	Shanghai Pudong Development Bank Co Ltd	Shanghai
+600008	首创股份	Beijing Capital Co Ltd	Shanghai
+600009	上海机场	Shanghai International Airport Co Ltd	Shanghai
+600010	包钢股份	Inner Mongolia Baotou Steel Union Co Ltd	Shanghai
+600011	华能国际	Huaneng Power International Inc	Shanghai
+600015	华夏银行	Hua Xia Bank Co Ltd	Shanghai
+600016	民生银行	China Minsheng Banking Corp Ltd	Shanghai
+600018	上港集团	Shanghai International Port (Group) Co Ltd	Shanghai
+600019	宝钢股份	Baoshan Iron &Steel Co Ltd	Shanghai
+600027	华电国际	Huadian Power International Corporation Ltd	Shanghai
+600028	中国石化	China Petroleum and Chemical Corp (Sinopec)	Shanghai
+600029	南方航空	China Southern Airlines Co Ltd	Shanghai
+600030	中信证券	CITIC Securities Co Ltd	Shanghai
+600031	三一重工	Sany Heavy Industry Co Ltd	Shanghai
+600036	招商银行	China Merchants Bank Co Ltd	Shanghai
+600048	保利地产	Poly Real Estate Group Co Ltd	Shanghai
+600050	中国联通	China United Network Communications Co Ltd	Shanghai
+600058	五矿发展	Minmetals Development Co Ltd	Shanghai
+600060	海信电器	Hisense Electric Co Ltd	Shanghai
+600062	华润双鹤	CHINA RESOURCES DOUBLE-CRANE PHARMACEUTICAL CO.,LTD.	Shanghai
+600066	宇通客车	Zhengzhou Yutong Bus Co Ltd	Shanghai
+600068	葛洲坝	China Gezhouba Group Co Ltd	Shanghai
+600079	人福医药	Humanwell Healthcare (Group) Co., Ltd.	Shanghai
+600085	同仁堂	Beijing Tongrentang Co Ltd	Shanghai
+600089	特变电工	TBEA Co Ltd	Shanghai
+600096	云天化	Yunnan Yuntianhua Co Ltd	Shanghai
+600100	同方股份	Tsinghua Tongfang Co Ltd	Shanghai
+600104	上汽集团	SAIC Motor Co Ltd	Shanghai
+600108	亚盛集团	Gansu Yasheng Industrial (Group) Co Ltd	Shanghai
+600109	国金证券	Sinolink Securities Co. Ltd.	Shanghai
+600111	包钢稀土	Inner Mongolia Baotou Steel Rare-Earth Hi-Tech Co Ltd	Shanghai
+600115	东方航空	China Eastern Airlines Corp Ltd	Shanghai
+600118	中国卫星	China Spacesat Co Ltd	Shanghai
+600123	兰花科创	Shanxi Lanhua Science-Tech Venture Co Ltd	Shanghai
+600143	金发科技	Kingfa Sci&Tech Co Ltd	Shanghai
+600150	中国船舶	HuDong Heavy Machinery Co Ltd	Shanghai
+600153	建发股份	Xiamen C&D Inc	Shanghai
+600157	永泰能源	Wintime Energy Co Ltd	Shanghai
+600160	巨化股份	Zhejiang Ju Hua Co Ltd	Shanghai
+600166	福田汽车	Beiqi Foton Motor Co Ltd	Shanghai
+600170	上海建工	Shanghai Construction Co Ltd	Shanghai
+600177	雅戈尔	Youngor Group Co Ltd	Shanghai
+600188	兖州煤业	Yanzhou Coal Mining Co Ltd	Shanghai
+600196	复星医药	Shanghai Fosun Pharmaceutical (Group) Co Ltd	Shanghai
+600208	新湖中宝	Xinhu Zhongbao Co Ltd	Shanghai
+600216	浙江医药	Zhejiang Medicine Co Ltd	Shanghai
+600219	南山铝业	Shandong Nanshan Industrial Co Ltd	Shanghai
+600221	海南航空	Hainan Airlines Co Ltd	Shanghai
+600252	中恒集团	Guangxi Wuzhou Zhongheng Group Co Ltd	Shanghai
+600256	广汇能源	GUANGHUI ENERGY CO., LTD.	Shanghai
+600259	广晟有色	Hainan Xingye Polyester Co Ltd	Shanghai
+600266	北京城建	Beijing Urban Construction Investment & Development Co Ltd	Shanghai
+600267	海正药业	Zhejiang Hisun Pharmaceutical Co Ltd	Shanghai
+600271	航天信息	Aerospace Information Co Ltd	Shanghai
+600276	恒瑞医药	Jiangsu Hengrui Medicine Co Ltd	Shanghai
+600309	万华化学	Wanhua Chemical Group Co., Ltd.	Shanghai
+600315	上海家化	Shanghai Jahwa United Co Ltd	Shanghai
+600316	洪都航空	Jiangxi Hongdu Aviation Industry Co Ltd	Shanghai
+600332	白云山	GUANGZHOU BAIYUNSHAN PHARMACEUTICAL HOLDINGS COMPANY LIMITED	Shanghai
+600340	华夏幸福	Zhejiang King Refrigeration Industry Co Ltd	Shanghai
+600348	阳泉煤业	Yang Quan Coal Industry (Group) Co., Ltd	Shanghai
+600352	浙江龙盛	Zhejiang Longsheng Group Co Ltd	Shanghai
+600362	江西铜业	Jiangxi Copper Co Ltd	Shanghai
+600369	西南证券	Southwest Securities Co Ltd	Shanghai
+600372	中航电子	Jiangxi Changhe Automobile Co Ltd	Shanghai
+600376	首开股份	Beijing Tianhong Baoye Real Estate Co Ltd	Shanghai
+600383	金地集团	Gemdale Corporation	Shanghai
+600395	盘江股份	Guizhou Panjiang Refined Coal Co Ltd	Shanghai
+600403	大有能源	Nanjing Xwtec Co Ltd	Shanghai
+600406	国电南瑞	NARI Technology Development Co Ltd	Shanghai
+600415	小商品城	Zhejiang China Commodities City Group Co Ltd	Shanghai
+600436	片仔癀	Zhangzhou Pientzehuang Pharmaceutical Co Ltd	Shanghai
+600489	中金黄金	Zhongjin Gold Co Ltd	Shanghai
+600497	驰宏锌锗	Yunnan Chihong Zinc&Germanium Co Ltd	Shanghai
+600498	烽火通信	Fiberhome Telecommunication Technologies Co Ltd	Shanghai
+600516	方大炭素	Lanzhou Hailong New Material Co Ltd	Shanghai
+600518	康美药业	Kangmei Pharmaceutical Co Ltd	Shanghai
+600519	贵州茅台	Kweichow Moutai Co Ltd	Shanghai
+600528	中铁二局	China Railway Erju Co Ltd	Shanghai
+600535	天士力	TASLY PHARMACEUTICAL GROUP CO.,LTD	Shanghai
+600546	山煤国际	China Petroleum Jilin Chemical Engineering & Construction Co Ltd	Shanghai
+600547	山东黄金	Shandong Gold-Mining Co Ltd	Shanghai
+600549	厦门钨业	Xiamen Tungsten Co Ltd	Shanghai
+600582	天地科技	Tiandi Science & Technology Co Ltd	Shanghai
+600583	海油工程	Offshore Oil Engineering Co Ltd	Shanghai
+600585	海螺水泥	Anhui Conch Cement Co Ltd	Shanghai
+600588	用友软件	Yonyou Software Co., Ltd	Shanghai
+600597	光明乳业	Bright Dairy & Food Co Ltd	Shanghai
+600598	北大荒	Heilongjiang Agriculture Co Ltd	Shanghai
+600600	青岛啤酒	Tsingtao Brewery Co Ltd	Shanghai
+600637	百视通	BesTV New Media Co., Ltd.	Shanghai
+600642	申能股份	Shenergy Co Ltd	Shanghai
+600648	外高桥	Shanghai Wai Gaoqiao Free Trade Zone Development Co Ltd	Shanghai
+600649	城投控股	Shanghai Municipal Raw Water Co Ltd	Shanghai
+600655	豫园商城	Shanghai Yuyuan Tourist Mart Co Ltd	Shanghai
+600660	福耀玻璃	Fuyao Group Glass Industries Co Ltd	Shanghai
+600663	陆家嘴	Shanghai Lujiazui Finance and Trade Zone Development Co Ltd	Shanghai
+600664	哈药股份	Harbin Pharmaceutical Group Co Ltd	Shanghai
+600674	川投能源	Sichuan Chuantou Energy Co Ltd	Shanghai
+600688	上海石化	Sinopec Shanghai Petrochemical Co Ltd	Shanghai
+600690	青岛海尔	Qingdao Haier Co Ltd	Shanghai
+600694	大商股份	Dashang Co Ltd	Shanghai
+600703	三安光电	Tianyi Science & Technology Co Ltd	Shanghai
+600705	中航投资	Beiya Industrial (Group) Co Ltd	Shanghai
+600718	东软集团	Shenyang Neusoft Co Ltd	Shanghai
+600739	辽宁成大	Liaoning Cheng Da Co Ltd	Shanghai
+600741	华域汽车	Shanghai Bashi Industrial (Group) Co Ltd	Shanghai
+600783	鲁信创投	Shandong Luxin High-Tech Industry Co Ltd	Shanghai
+600795	国电电力	GD Power Development Co Ltd	Shanghai
+600804	鹏博士	DR. PENG TELECOM&MEDIA GROUP CO., LTD.	Shanghai
+600809	山西汾酒	Shanxi Xinghuacun Fen Wine Factory Co Ltd	Shanghai
+600811	东方集团	Orient Group Incorporation	Shanghai
+600827	友谊股份	Shanghai Friendship Group Incorporated Co	Shanghai
+600832	东方明珠	Shanghai Oriental Pearl (Group) Co Ltd	Shanghai
+600837	海通证券	Haitong Securities Company Limited	Shanghai
+600839	四川长虹	Sichuan Changhong Electric Co Ltd	Shanghai
+600859	王府井	Beijing Wangfujing Department Store Co Ltd	Shanghai
+600863	内蒙华电	Inner Mongolia Mengdian Huaneng Thermal Power Corp Ltd	Shanghai
+600873	梅花集团	Wuzhou Minovo Co Ltd	Shanghai
+600875	东方电气	Dongfang Electrical Machinery Co Ltd	Shanghai
+600886	国投电力	SDIC Huajing Power Holdings Co Ltd	Shanghai
+600887	伊利股份	Inner Mongolia Yili Industrial Group Co Ltd	Shanghai
+600893	航空动力	China Resources (Jilin) Bio-Chemical Co Ltd	Shanghai
+600895	张江高科	Shanghai Zhangjiang Hi-tech Park Development Co Ltd	Shanghai
+600900	长江电力	China Yangtze Power Co Ltd	Shanghai
+600970	中材国际	Sinoma International Engineering Co Ltd	Shanghai
+600971	恒源煤电	Anhui Hengyuan Coal Industry and Electricity Power Co Ltd	Shanghai
+600997	开滦股份	Kailuan Clean Coal Co Ltd	Shanghai
+600999	招商证券	China Merchants Securities Co Ltd	Shanghai
+601001	大同煤业	Datong Energy Chemical Co Ltd	Shanghai
+601006	大秦铁路	Daqin Railway Co Ltd	Shanghai
+601009	南京银行	Bank of Nanjing Co Ltd	Shanghai
+601018	宁波港	Ningbo Port Co Ltd	Shanghai
+601088	中国神华	China Shenhua Energy Co Ltd	Shanghai
+601098	中南传媒	China South Publishing & Media Group Co Ltd	Shanghai
+601099	太平洋	The Pacific Securities Co.Ltd	Shanghai
+601101	昊华能源	Beijing Haohua Energy Resource Co Ltd	Shanghai
+601106	中国一重	China First Heavy Industries Co Ltd	Shanghai
+601111	中国国航	Air China Ltd	Shanghai
+601117	中国化学	China National Chemical Engineering Co Ltd	Shanghai
+601118	海南橡胶	China Hainan Rubber Industry Group Co Ltd	Shanghai
+601139	深圳燃气	Shenzhen Gas Co Ltd	Shanghai
+601158	重庆水务	Chongqing Water Group Co Ltd	Shanghai
+601166	兴业银行	Industrial Bank	Shanghai
+601168	西部矿业	Western Mining Co Ltd	Shanghai
+601169	北京银行	Bank of Beijing Co Ltd	Shanghai
+601186	中国铁建	China Railway Construction Co Ltd	Shanghai
+601231	环旭电子	Universal Scientific Industrial (Shanghai) Co.,Ltd.	Shanghai
+601238	广汽集团	Guangzhou Automobile Group Co., Ltd.	Shanghai
+601258	庞大集团	Pangda Automobile Trade Co Ltd	Shanghai
+601288	农业银行	Agricultural Bank of China Co Ltd	Shanghai
+601299	中国北车	China CNR Co Ltd	Shanghai
+601318	中国平安	Ping An Insurance (Group) Company of China Ltd	Shanghai
+601328	交通银行	Bank of Communications Co LTD	Shanghai
+601333	广深铁路	Guangshen Railway	Shanghai
+601336	新华保险	New China Life Insurance Co Ltd	Shanghai
+601369	陕鼓动力	Xi'an Shaangu Power Co Ltd	Shanghai
+601377	兴业证券	Industrial Securities Co Ltd	Shanghai
+601390	中国中铁	China Railway Co Ltd	Shanghai
+601398	工商银行	Industrial and Commercial Bank of China Ltd	Shanghai
+601555	东吴证券	Soochow Securities Co Ltd	Shanghai
+601600	中国铝业	Aluminum Corporation of China Limited	Shanghai
+601601	中国太保	China Pacific Insurance (Group) Co Ltd	Shanghai
+601607	上海医药	Shanghai Pharmaceuticals Co Ltd	Shanghai
+601618	中国中冶	Metallurgical Corporation of China Co Ltd	Shanghai
+601628	中国人寿	China Life Insurance Company Limited	Shanghai
+601633	长城汽车	Great Wall Motor Co Ltd	Shanghai
+601666	平煤股份	Pingdingshan Tianan Coal Mining Co Ltd	Shanghai
+601668	中国建筑	China State Construction Engineering Co Ltd	Shanghai
+601669	中国电建	Power Construction Corporation of China,Ltd	Shanghai
+601688	华泰证券	Huatai Securities Co Ltd	Shanghai
+601699	潞安环能	Shanxi Lu'an Environmental Energy Development Co Ltd	Shanghai
+601717	郑煤机	Zhengzhou Coal Mining Machinery Group Co Ltd	Shanghai
+601766	中国南车	CSR Co Ltd	Shanghai
+601800	中国交建	China Communications Construction Company Limited	Shanghai
+601808	中海油服	China Oilfield Services Limited	Shanghai
+601818	光大银行	China Everbright Bank Co Ltd	Shanghai
+601857	中国石油	PetroChina Co Ltd	Shanghai
+601866	中海集运	China Shipping Container Lines Co Ltd	Shanghai
+601888	中国国旅	China International Travel Service Co Ltd	Shanghai
+601898	中煤能源	China Coal Energy Co Ltd	Shanghai
+601899	紫金矿业	Zijin Mining Group Co Ltd	Shanghai
+601901	方正证券	Founder Securities Co Ltd	Shanghai
+601918	国投新集	SDIC Xinji Energy Co Ltd	Shanghai
+601928	凤凰传媒	Jiangsu Phoenix Publishing & Media Co Ltd	Shanghai
+601933	永辉超市	Yonghui Superstores Co Ltd	Shanghai
+601939	建设银行	China Construction Bank	Shanghai
+601958	金钼股份	Jinduicheng Molybdenum Co Ltd	Shanghai
+601988	中国银行	Bank of China Ltd	Shanghai
+601989	中国重工	China Shipbuilding Industry Co Ltd	Shanghai
+601991	大唐发电	Datang Power Generation	Shanghai
+601992	金隅股份	BBMG Corporation	Shanghai
+601998	中信银行	China Citic Bank Corporation Limited	Shanghai
+603000	人民网	People.cn CO.,LTD	Shanghai
+603993	洛阳钼业	China Molybdenum Co., Ltd.	Shanghai
