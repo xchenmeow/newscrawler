@@ -9,12 +9,20 @@ import os.path
 import scseg
 
 
-def FindTimeText():
-	'''findTimeText returns guba, time, and title of a post'''
-	rows = []
-	guba = []
-	title = []
-	time = []
+class PostInfo(object):
+	def __init__(self, clk, rev, guba, time, title, aut, href):
+		self.clk = clk
+		self.rev = rev
+		self.guba = guba
+		self.time = time
+		self.title = title
+		self.aut = aut
+		self.href = href
+
+
+def FindPostInfo():
+	'''findPostInfo returns clk, rev, guba, time, aut, title and href of a post'''
+	postInfo = []
 	baseurlstr = 'http://guba.eastmoney.com/'
 	for i in range(1,16):
 		urlstr = baseurlstr + 'default_' + str(i) + '.html'
@@ -22,14 +30,16 @@ def FindTimeText():
 		soup = BeautifulSoup(urllib2.urlopen(urlstr).read())
 		row = soup.find('li','first')
 		while row != None:
-			rows.append(row)
+			clk = row.find_all('cite')[0].string
+			rev = row.find_all('cite')[1].string
+			guba = row.find('a', 'balink').string
+			title = row.find('a', 'note').string
+			aut = row.find('cite', 'aut').string
+			time = row.find('cite', 'date').string
+			href = baseurlstr + row.find('a', 'note')['href']
+			postInfo.append(PostInfo(clk, rev, guba, time, title, aut, href))
 			row = row.next_sibling.next_sibling
-		guba += [item.find('a', 'balink').string for item in rows]
-		title += [item.find('a', 'note').string for item in rows]
-		time += [item.find('cite', 'date').string for item in rows]
-		# need to return href??
-		# need to save text to server??
-	return zip(guba, time, title)
+	return postInfo
 
 def ParseText(text):
 	'''parsetext returns a sentiment score of text(unicode)
@@ -52,6 +62,8 @@ def ParseText(text):
 	return totalscore
 
 def FindTicker(guba):
+	"""turn guba into ticker.
+	if cannot find it in A share list then return 0"""
 	codingtype = sys.getfilesystemencoding()
 	guba = guba.replace(u'吧', '')
 	with open('AShareTickerList.csv', 'r') as f:
@@ -81,20 +93,34 @@ def FindTicker(guba):
 		return newsticker
 
 def ParseTime(time):
+	"""turn a time string into a time object in python"""
 	codingtype = sys.getfilesystemencoding()
 	time = str(datetime.date.today().year) + '-' + time
 	timeobj = datetime.datetime.strptime(time.encode(codingtype).strip(), '%Y-%m-%d %H:%M')
 	return timeobj
 
+def IsNewRecord(postInfo):
+	"""take a postInfo to see if it is a new or updated record in database"""
+	# key: title, aut???
+	pass
+
+def UpdateDataSet():
+	pass
+
 
 
 codingtype = sys.getfilesystemencoding()
-# a = FindTimeText()[0]
-a = (u'上证指数吧',u'09-24 11:44',u'最珍贵是大盘回探那一笑 接下来的选股思路揭秘')
-guba = a[0].encode(codingtype)
-time = a[1].encode(codingtype)
-title = a[2].encode(codingtype)
+b = FindPostInfo()
+print len(b)
+a = b[6]
+# a = (u'上证指数吧',u'09-24 11:44',u'最珍贵是大盘回探那一笑 接下来的选股思路揭秘')
+# guba = a[0].encode(codingtype)
+# time = a[1].encode(codingtype)
+# title = a[2].encode(codingtype)
 # print guba, time, title
-print ParseText(a[2])
-print FindTicker(u'上证指数吧')
-print ParseTime(u'09-24 11:44')
+print a.clk, a.rev, a.aut.encode(codingtype), a.href, a.title.encode(codingtype), a.guba.encode(codingtype)
+print ParseText(a.title)
+print FindTicker(a.guba)
+print ParseTime(a.time)
+# print FindTicker(u'上证指数吧')
+# print ParseTime(u'09-24 11:44')

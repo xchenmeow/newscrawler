@@ -146,11 +146,13 @@ def updateDataSet():
 	ticker = []
 	sentimentscore = []
 	newstime = []
+	newstext = []
 	for i in range(len(time)):
 		if findTicker(text[i]) != 0  and findTicker(text[i]) != 1:
 			ticker.append(findTicker(text[i]))
 			sentimentscore.append(calSentimentScore(text[i]))
 			newstime.append(time[i])
+			newstext.append(text[i])
 		else:
 			try:
 				innerticker, innersent = zip(*digIn(text[i]))
@@ -163,6 +165,7 @@ def updateDataSet():
 				sentimentscore.append(item)
 			for j in range(len(innerticker)):
 				newstime.append(time[i])
+				newstext.append(text[i])
 			## TODO
 			# order (ticker, sent, time) by time
 			# read from SQL
@@ -170,7 +173,7 @@ def updateDataSet():
 		with open('archive.txt', 'wb') as f:
 			data = []
 			for i in range(len(ticker)):
-				data.append([ticker[i], ',', str(sentimentscore[i]), ',', newstime[i].strftime('%Y-%m-%d %H:%M:%S'), '\n'])
+				data.append([ticker[i], ',', newstext[i].encode(codingtype), ',', str(sentimentscore[i]), ',', newstime[i].strftime('%Y-%m-%d %H:%M:%S'), '\n'])
 				data.reverse()
 				# TODO
 				# not reverse but order by time
@@ -195,7 +198,7 @@ def updateDataSet():
 				time1 = newstime[:idx]
 				time1.reverse()
 				for i in range(len(ticker1)):
-					f.writelines([ticker1[i], ',', str(sentimentscore1[i]), ',', time1[i].strftime('%Y-%m-%d %H:%M:%S'), '\n'])
+					f.writelines([ticker1[i], ',', newstext[i].encode(codingtype), ',', str(sentimentscore1[i]), ',', time1[i].strftime('%Y-%m-%d %H:%M:%S'), '\n'])
 	return 0
 
 ## searching keyword in the news
