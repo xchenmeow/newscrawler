@@ -10,11 +10,11 @@ import scseg
 import pandas as pd
 
 class PostInfo(object):
-	'''clk(int), rev(int), guba(unicode), time(timeobject), title(unicode)
+	'''guba(unicode), time(timeobject), title(unicode)
 	aut(unicode), href(string)'''
-	def __init__(self, clk, rev, guba, time, title, aut, href):
-		self.clk = clk
-		self.rev = rev
+	def __init__(self, guba, time, title, aut, href):
+		# self.clk = clk
+		# self.rev = rev
 		self.guba = guba
 		self.time = time
 		self.title = title
@@ -22,20 +22,34 @@ class PostInfo(object):
 		self.href = href
 	def __eq__(self, other):
 		codingtype = sys.getfilesystemencoding()
-		eq1 = self.clk == other.clk
-		eq2 = self.rev == other.rev
-		eq3 = self.guba.encode(codingtype) == other.guba.encode(codingtype)
-		eq4 = self.time == other.time
-		eq5 = self.title.encode(codingtype) == other.title.encode(codingtype)
-		eq6 = self.aut.encode(codingtype) == other.aut.encode(codingtype)
-		eq7 = self.href == other.href
-		return all([eq1, eq2, eq3, eq4, eq5, eq6, eq7])
+		eq1 = (self.guba.encode(codingtype) == other.guba.encode(codingtype))
+		eq2 = ((self.time - other.time).total_seconds < 1)
+		eq3 = (self.title.encode(codingtype) == other.title.encode(codingtype))
+		eq4 = (self.aut.encode(codingtype) == other.aut.encode(codingtype))
+		eq5 = (self.href == other.href)
+		return all([eq1, eq2, eq3, eq4, eq5])
 
+
+class ClkRev(object):
+	'''clk(int), rev(int), lasttime(datetime.datetime), href(string)--FORIEGNKEY'''
+	def __init__(self, clk, rev,href, lasttime):
+		self.clk = clk
+		self.rev = rev
+		self.href = href
+		self.lasttime = lasttime
+	def __eq__(self, other):
+		codingtype = sys.getfilesystemencoding()
+		eq1 = (self.clk == other.clk)
+		eq2 = (self.rev == other.rev)
+		eq3 = (self.href == other.href)
+		eq4 = ((self.lasttime - other.lasttime).total_seconds < 1)
+		return all([eq1, eq2, eq3, eq4])
 
 def FindPostInfo():
 	'''findPostInfo returns clk, rev, guba, time, aut, title and href of a post'''
 	codingtype = sys.getfilesystemencoding()
 	postInfo = []
+	clkrev = []
 	baseurlstr = 'http://guba.eastmoney.com/'
 	for i in range(1,16):
 		urlstr = baseurlstr + 'default_' + str(i) + '.html'
@@ -49,10 +63,12 @@ def FindPostInfo():
 			title = unicode(row.find('a', 'note').string)
 			aut = unicode(row.find('cite', 'aut').string)
 			time = ParseTime(row.find('cite', 'date').string)
+			lasttime = ParseTime(row.find('cite', 'last').string)
 			href = baseurlstr + row.find('a', 'note')['href']
-			postInfo.append(PostInfo(clk, rev, guba, time, title, aut, href))
+			postInfo.append(PostInfo(guba, time, title, aut, href))
+			clkrev.append(ClkRev(clk, rev, href, lasttime))
 			row = row.next_sibling.next_sibling
-	return postInfo
+	return (postInfo, clkrev)
 
 def ParseText(text):
 	'''parsetext returns a sentiment score of text(unicode)
@@ -111,67 +127,104 @@ def ParseTime(time):
 	timeobj = datetime.datetime.strptime(timey.encode(codingtype).strip(), '%Y-%m-%d %H:%M')
 	return timeobj
 
-def IsNewRecord(postInfo):
+def IsNewRecord(postInfo, clkrev):
 	"""take a postInfo to see if it is a new or updated record in database
 	0 for old, 1 for new, 2 for updated"""
 	codingtype = sys.getfilesystemencoding()
 	if not os.path.exists('EastMoneyArchive.csv'):
-		return 1
+		return 1 
+	if postInfo.href != clkrev.href:
+		return -1
 	df = pd.read_csv('EastMoneyArchive.csv')
-	olditem = df[df['title']==postInfo.title.encode(codingtype)]
-	if olditem.empty:
-		return 1
-	clk = olditem['clk'].ix[0]
-	rev = olditem['rev'].ix[0]
-	guba = olditem['guba'].ix[0].decode(codingtype)
-	ptime = olditem['time']
-	# date_object = datetime.datetime.strptime(ptime.strip(), '%Y-%m-%d %H:%M:%S')
-	title = olditem['title'].ix[0].decode(codingtype)
-	aut = olditem['aut'].ix[0].decode(codingtype)
-	href = olditem['href'].ix[0]
-	lastPostInfo = PostInfo(clk, rev, guba, ptime, title, aut, href)
-	if lastPostInfo == postInfo:
-		return 0
+	df2 = pd.read_csv('EastMoneyClkRev.csv')
+	olditem = df[df['href']==postInfo.href]
+	a1 = df2[df2['href']==clkrev.href]
+	a2 = df2[df2['lasttime']==clkrev.lasttime]
+	oldclkrev = pd.merge(a1, a2)
+	if not olditem.empty:
+		if not oldclkrev.empty:
+			return 0
+		else:
+			return 2
 	else:
-		return 2
+		return 1
+	# clk = oldclkrev['clk'].ix[oldclkrev.index[0]]
+	# rev = oldclkrev['rev'].ix[oldclkrev.index[0]]
+	# lasttime = oldclkrev['lasttime'].ix[oldclkrev.index[0]]
+	# guba = olditem['guba'].ix[olditem.index[0]].decode(codingtype)
+	# temptime = olditem['time'].ix[olditem.index[0]]
+	# ptime = datetime.datetime.strptime(temptime, '%Y-%m-%d %H:%M:%S')
+	# title = olditem['title'].ix[olditem.index[0]].decode(codingtype)
+	# aut = olditem['aut'].ix[olditem.index[0]].decode(codingtype)
+	# href = olditem['href'].ix[olditem.index[0]]
+	# lastPostInfo = PostInfo(guba, ptime, title, aut, href)
+	# lastclkrev = ClkRev(clk, rev, href, lasttime)
+	# if lastPostInfo == postInfo and lastclkrev == clkrev:
+	# 	return 0
+	# else:
+	# 	return -1
 
-def UpdateDataSet(postInfoList):
+
+def UpdateDataSet(postInfoList, clkrevList):
 	'''postInfoList is a list of PostInfo, if the PostInfo is a new record, append it to csv;
-	if it is updated, change it'''
-	## CHANGE IT???
-	## CLK CHANGES ALL THE TIME
-	## PUT CLK AND REV TIME SERIES IN ANOTHER CSV???(KEY: TITLE)???
-	postinfodict = {'clk':[],'rev':[],'guba':[],'title':[],'time':[],'aut':[],'href':[]}
-	for postinfo in postInfoList:
-		postinfodict['clk'].append(postinfo.clk)
-		postinfodict['rev'].append(postinfo.rev)
+	if it is updated, append to clkrev'''
+	if len(postInfoList) != len(clkrevList):
+		return -1
+	f = 'EastMoneyArchive.csv'
+	f2 = 'EastMoneyClkRev.csv'
+	newPostInfoList = []
+	newclkrevList = []
+	if not os.path.exists(f):
+		newPostInfoList = postInfoList
+	else:
+		for (postinfo, clkrev) in zip(postInfoList, clkrevList):
+			if IsNewRecord(postinfo, clkrev) == 0:
+				continue
+			elif IsNewRecord(postinfo, clkrev) == 1:
+				newPostInfoList.append(postinfo)
+				newclkrevList.append(clkrev)
+			elif IsNewRecord(postinfo, clkrev) == 2:
+				newclkrevList.append(clkrev)
+	postinfodict = {'guba':[],'title':[],'time':[],'aut':[],'href':[]}
+	clkrevdict = {'clk':[], 'rev':[], 'href':[], 'lasttime':[]}
+	for postinfo in newPostInfoList:
 		postinfodict['guba'].append(postinfo.guba.encode(codingtype))
 		postinfodict['title'].append(postinfo.title.encode(codingtype))
-		# postinfodict['time'].append(datetime.time.strftime('%Y-%m-%d %H:%M:%S', postinfo.time))
 		postinfodict['time'].append(postinfo.time)
 		postinfodict['aut'].append(postinfo.aut.encode(codingtype))
 		postinfodict['href'].append(postinfo.href)
+	for clkrev in newclkrevList:
+		clkrevdict['clk'].append(clkrev.clk)
+		clkrevdict['rev'].append(clkrev.rev)
+		clkrevdict['lasttime'].append(clkrev.lasttime)
+		clkrevdict['href'].append(clkrev.href)
 	df = pd.DataFrame(postinfodict)
-	f = 'EastMoneyArchive.csv'
-	if not os.path.exists(f):
-		df.to_csv(f, index=False)
+	df2 = pd.DataFrame(clkrevdict)
+	if not os.path.exists(f):  
+		with open(f, 'w') as archive:
+			df.to_csv(archive, header=True, index=False)
+		with open(f2, 'w') as archive2:
+			df2.to_csv(archive2, header=True, index=False)
 	else:
-		pass
-
+		with open(f, 'a') as archive: 
+			df.to_csv(archive, header=False, index=False)
+		with open(f2, 'a') as archive2: 
+			df2.to_csv(archive2, header=False, index=False)
 
 
 
 codingtype = sys.getfilesystemencoding()
-b = FindPostInfo()
+(p,r) = FindPostInfo()
 # print len(b)
 # a = b[6]
 # b = [PostInfo(12,3,u'上证指数吧', datetime.date.today(), u'最珍贵是大盘回探那一笑 接下来的选股思路揭秘', 'abc', 'http://google.com')]
 # b = [PostInfo(2241,11,'股市实战吧',datetime.datetime(2014,11,21,10,0,0),'国务院发布能源规划，核电目标装机未下调','恋股人',"http://guba.eastmoney.com//news,gssz,131248360.html")]
-a = b[0]
+a1 = p[0]
+a2 = r[0]
 # print a.clk, a.rev, a.aut.encode(codingtype), a.href, a.title.encode(codingtype), a.guba.encode(codingtype), a.time
 # print ParseText(a.title)
 # print FindTicker(a.guba)
-UpdateDataSet(b)
+UpdateDataSet(p,r)
 # print FindTicker(u'上证指数吧')
 # print ParseTime(u'09-24 11:44')
-print IsNewRecord(a)
+print IsNewRecord(a1,a2)
