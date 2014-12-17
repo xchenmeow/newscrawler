@@ -51,9 +51,9 @@ def FindPostInfo():
 	postInfo = []
 	clkrev = []
 	baseurlstr = 'http://guba.eastmoney.com/'
-	for i in range(1,16):
+	for i in range(1,3501):
 		urlstr = baseurlstr + 'default_' + str(i) + '.html'
-		print urlstr
+		print i
 		soup = BeautifulSoup(urllib2.urlopen(urlstr).read())
 		row = soup.find('li','first')
 		while row != None:
@@ -62,7 +62,11 @@ def FindPostInfo():
 			guba = unicode(row.find('a', 'balink').string)
 			title = unicode(row.find('a', 'note').string)
 			aut = unicode(row.find('cite', 'aut').string)
-			time = ParseTime(row.find('cite', 'date').string)
+			try:
+				time = ParseTime(row.find('cite', 'date').string)
+			except ValueError:
+				print row.find('cite', 'date').string
+				time = datetime.datetime(2014,12,9,0,0,0)
 			lasttime = ParseTime(row.find('cite', 'last').string)
 			href = baseurlstr + row.find('a', 'note')['href']
 			postInfo.append(PostInfo(guba, time, title, aut, href))
@@ -127,7 +131,7 @@ def ParseTime(time):
 	timeobj = datetime.datetime.strptime(timey.encode(codingtype).strip(), '%Y-%m-%d %H:%M')
 	return timeobj
 
-def IsNewRecord(postInfo, clkrev):
+def IsNewRecord(postInfo, clkrev, oldpostinfo, oldclkrev):
 	"""take a postInfo to see if it is a new or updated record in database
 	0 for old, 1 for new, 2 for updated"""
 	codingtype = sys.getfilesystemencoding()
@@ -135,8 +139,10 @@ def IsNewRecord(postInfo, clkrev):
 		return 1 
 	if postInfo.href != clkrev.href:
 		return -1
-	df = pd.read_csv('EastMoneyArchive.csv')
-	df2 = pd.read_csv('EastMoneyClkRev.csv')
+	# df = pd.read_csv('EastMoneyArchive.csv')
+	# df2 = pd.read_csv('EastMoneyClkRev.csv')
+	df = oldpostinfo
+	df2 = oldclkrev
 	olditem = df[df['href']==postInfo.href]
 	a1 = df2[df2['href']==clkrev.href]
 	a2 = df2[df2['lasttime']==clkrev.lasttime]
@@ -148,21 +154,42 @@ def IsNewRecord(postInfo, clkrev):
 			return 2
 	else:
 		return 1
-	# clk = oldclkrev['clk'].ix[oldclkrev.index[0]]
-	# rev = oldclkrev['rev'].ix[oldclkrev.index[0]]
-	# lasttime = oldclkrev['lasttime'].ix[oldclkrev.index[0]]
-	# guba = olditem['guba'].ix[olditem.index[0]].decode(codingtype)
-	# temptime = olditem['time'].ix[olditem.index[0]]
-	# ptime = datetime.datetime.strptime(temptime, '%Y-%m-%d %H:%M:%S')
-	# title = olditem['title'].ix[olditem.index[0]].decode(codingtype)
-	# aut = olditem['aut'].ix[olditem.index[0]].decode(codingtype)
-	# href = olditem['href'].ix[olditem.index[0]]
-	# lastPostInfo = PostInfo(guba, ptime, title, aut, href)
-	# lastclkrev = ClkRev(clk, rev, href, lasttime)
-	# if lastPostInfo == postInfo and lastclkrev == clkrev:
-	# 	return 0
-	# else:
-	# 	return -1
+
+
+def IsNewDF(postInfoList, clkrevList):
+	'''newdf diff olddf'''
+	postinfodict = {'guba':[],'title':[],'time':[],'aut':[],'href':[]}
+	clkrevdict = {'clk':[], 'rev':[], 'href':[], 'lasttime':[]}
+	for postinfo in postInfoList:
+		postinfodict['guba'].append(postinfo.guba.encode(codingtype))
+		postinfodict['title'].append(postinfo.title.encode(codingtype))
+		postinfodict['time'].append(postinfo.time)
+		postinfodict['aut'].append(postinfo.aut.encode(codingtype))
+		postinfodict['href'].append(postinfo.href)
+	for clkrev in clkrevList:
+		clkrevdict['clk'].append(clkrev.clk)
+		clkrevdict['rev'].append(clkrev.rev)
+		clkrevdict['lasttime'].append(clkrev.lasttime)
+		clkrevdict['href'].append(clkrev.href)
+	df = pd.DataFrame(postinfodict)
+	df2 = pd.DataFrame(clkrevdict)
+	olddf = pd.read_csv('EastMoneyArchive.csv')
+	olddf2 = pd.read_csv('EastMoneyClkRev.csv') 
+	intersectionkey = list(set(list(df['href'])).intersection(list(olddf['href'])))
+	# intersectionkey = [filter(lambda x: x in list(df['href']), sublist) for sublist in list(olddf['href'])]
+	# intersectiontime = list(set(list(df2['lasttime'])).intersection(list(olddf2['lasttime'])))
+	for key in intersectionkey:
+		newdf = df.drop(df.index[df['href']==key])
+	# for key2 in intersectiontime:
+	# 	a1 = df2[df2['href']==key]
+	# 	a2 = df2[df2['lasttime']==key2]
+	# 	oldclkrev = pd.merge(a1, a2)
+	# 	newdf2 = df2.drop(oldclkrev)
+	newdf2 = df2
+	newdf = newdf.drop_duplicates()
+	newdf2 = newdf2.drop_duplicates()
+	return (newdf, newdf2)
+
 
 
 def UpdateDataSet(postInfoList, clkrevList):
@@ -172,34 +199,58 @@ def UpdateDataSet(postInfoList, clkrevList):
 		return -1
 	f = 'EastMoneyArchive.csv'
 	f2 = 'EastMoneyClkRev.csv'
+	
 	newPostInfoList = []
 	newclkrevList = []
 	if not os.path.exists(f):
 		newPostInfoList = postInfoList
+		newclkrevList = clkrevList
+		postinfodict = {'guba':[],'title':[],'time':[],'aut':[],'href':[]}
+		clkrevdict = {'clk':[], 'rev':[], 'href':[], 'lasttime':[]}
+		for postinfo in newPostInfoList:
+			postinfodict['guba'].append(postinfo.guba.encode(codingtype))
+			postinfodict['title'].append(postinfo.title.encode(codingtype))
+		 	postinfodict['time'].append(postinfo.time)
+		 	postinfodict['aut'].append(postinfo.aut.encode(codingtype))
+		 	postinfodict['href'].append(postinfo.href)
+		for clkrev in newclkrevList:
+		 	clkrevdict['clk'].append(clkrev.clk)
+		 	clkrevdict['rev'].append(clkrev.rev)
+		 	clkrevdict['lasttime'].append(clkrev.lasttime)
+		 	clkrevdict['href'].append(clkrev.href)
+		df = pd.DataFrame(postinfodict)
+		df2 = pd.DataFrame(clkrevdict)
+		df = df.drop_duplicates()
+		df2 = df2.drop_duplicates()
 	else:
-		for (postinfo, clkrev) in zip(postInfoList, clkrevList):
-			if IsNewRecord(postinfo, clkrev) == 0:
-				continue
-			elif IsNewRecord(postinfo, clkrev) == 1:
-				newPostInfoList.append(postinfo)
-				newclkrevList.append(clkrev)
-			elif IsNewRecord(postinfo, clkrev) == 2:
-				newclkrevList.append(clkrev)
-	postinfodict = {'guba':[],'title':[],'time':[],'aut':[],'href':[]}
-	clkrevdict = {'clk':[], 'rev':[], 'href':[], 'lasttime':[]}
-	for postinfo in newPostInfoList:
-		postinfodict['guba'].append(postinfo.guba.encode(codingtype))
-		postinfodict['title'].append(postinfo.title.encode(codingtype))
-		postinfodict['time'].append(postinfo.time)
-		postinfodict['aut'].append(postinfo.aut.encode(codingtype))
-		postinfodict['href'].append(postinfo.href)
-	for clkrev in newclkrevList:
-		clkrevdict['clk'].append(clkrev.clk)
-		clkrevdict['rev'].append(clkrev.rev)
-		clkrevdict['lasttime'].append(clkrev.lasttime)
-		clkrevdict['href'].append(clkrev.href)
-	df = pd.DataFrame(postinfodict)
-	df2 = pd.DataFrame(clkrevdict)
+		df = pd.read_csv('EastMoneyArchive.csv')
+		df2 = pd.read_csv('EastMoneyClkRev.csv')
+		(df,df2) = IsNewDF(postInfoList, clkrevList)
+		# newdf = pd.dataFrame(postinfoList)
+		# newdf2 = pd.dataFrame(clkrevList)
+		# for (postinfo, clkrev) in zip(postInfoList, clkrevList):
+		# 	if IsNewRecord(postinfo, clkrev,df,df2) == 0:
+		# 		continue
+		# 	elif IsNewRecord(postinfo, clkrev,df,df2) == 1:
+		# 		newPostInfoList.append(postinfo)
+		# 		newclkrevList.append(clkrev)
+		# 	elif IsNewRecord(postinfo, clkrev,df,df2) == 2:
+		# 		newclkrevList.append(clkrev)
+	# postinfodict = {'guba':[],'title':[],'time':[],'aut':[],'href':[]}
+	# clkrevdict = {'clk':[], 'rev':[], 'href':[], 'lasttime':[]}
+	# for postinfo in newPostInfoList:
+	# 	postinfodict['guba'].append(postinfo.guba.encode(codingtype))
+	# 	postinfodict['title'].append(postinfo.title.encode(codingtype))
+	# 	postinfodict['time'].append(postinfo.time)
+	# 	postinfodict['aut'].append(postinfo.aut.encode(codingtype))
+	# 	postinfodict['href'].append(postinfo.href)
+	# for clkrev in newclkrevList:
+	# 	clkrevdict['clk'].append(clkrev.clk)
+	# 	clkrevdict['rev'].append(clkrev.rev)
+	# 	clkrevdict['lasttime'].append(clkrev.lasttime)
+	# 	clkrevdict['href'].append(clkrev.href)
+	# df = pd.DataFrame(postinfodict)
+	# df2 = pd.DataFrame(clkrevdict)
 	if not os.path.exists(f):  
 		with open(f, 'w') as archive:
 			df.to_csv(archive, header=True, index=False)
@@ -227,4 +278,4 @@ a2 = r[0]
 UpdateDataSet(p,r)
 # print FindTicker(u'上证指数吧')
 # print ParseTime(u'09-24 11:44')
-print IsNewRecord(a1,a2)
+# print IsNewRecord(a1,a2)
