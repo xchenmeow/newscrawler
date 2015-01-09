@@ -51,7 +51,7 @@ def FindPostInfo():
 	postInfo = []
 	clkrev = []
 	baseurlstr = 'http://guba.eastmoney.com/'
-	for i in range(1,3501):
+	for i in range(2501,3501):
 		urlstr = baseurlstr + 'default_' + str(i) + '.html'
 		print i
 		soup = BeautifulSoup(urllib2.urlopen(urlstr).read())
@@ -66,7 +66,7 @@ def FindPostInfo():
 				time = ParseTime(row.find('cite', 'date').string)
 			except ValueError:
 				print row.find('cite', 'date').string
-				time = datetime.datetime(2014,12,9,0,0,0)
+				time = datetime.datetime(2012,2,29,0,0,0)
 			lasttime = ParseTime(row.find('cite', 'last').string)
 			href = baseurlstr + row.find('a', 'note')['href']
 			postInfo.append(PostInfo(guba, time, title, aut, href))
@@ -127,7 +127,15 @@ def FindTicker(guba):
 def ParseTime(time):
 	"""turn a time string into a time object in python"""
 	codingtype = sys.getfilesystemencoding()
-	timey = str(datetime.date.today().year) + '-' + time
+	todaysyear = datetime.date.today().year
+	todaysmonth = datetime.date.today().month
+	todaysdate = datetime.date.today().day
+	timemonth = int(time[0:2])
+	timedate = int(time[3:5])
+	if todaysmonth < timemonth or (todaysmonth == timemonth and todaysdate < timedate) :
+		timey = str(todaysyear-1) + '-' + time
+	else:
+		timey = str(todaysyear) + '-' + time
 	timeobj = datetime.datetime.strptime(timey.encode(codingtype).strip(), '%Y-%m-%d %H:%M')
 	return timeobj
 
@@ -270,12 +278,13 @@ codingtype = sys.getfilesystemencoding()
 # a = b[6]
 # b = [PostInfo(12,3,u'上证指数吧', datetime.date.today(), u'最珍贵是大盘回探那一笑 接下来的选股思路揭秘', 'abc', 'http://google.com')]
 # b = [PostInfo(2241,11,'股市实战吧',datetime.datetime(2014,11,21,10,0,0),'国务院发布能源规划，核电目标装机未下调','恋股人',"http://guba.eastmoney.com//news,gssz,131248360.html")]
-a1 = p[0]
-a2 = r[0]
+# a1 = p[0]
+# a2 = r[0]
 # print a.clk, a.rev, a.aut.encode(codingtype), a.href, a.title.encode(codingtype), a.guba.encode(codingtype), a.time
 # print ParseText(a.title)
 # print FindTicker(a.guba)
 UpdateDataSet(p,r)
 # print FindTicker(u'上证指数吧')
 # print ParseTime(u'09-24 11:44')
+# print ParseTime(u'01-04 11:44')
 # print IsNewRecord(a1,a2)
